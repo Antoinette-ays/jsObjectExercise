@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form name = "ListCandidates">
+<input type="text" id="nameCandidate" placeHolder="Who are you going to vote?" />
+<input type="button" id="vote" value="Select" onclick="cVote()"/>
+<div id="display"></div>
+<br><br>
+<p id="listC">List of Candidates</p>
+<div id="listCandidate"></div>
+
+<p id="listBC">List of Black Listed Candidates</p>
+<div id="blistCandidate"></div>
+
+
+</form>
+
+<script>
+var canName = document.getElementById("nameCandidate");
+var output = document.getElementById("listCandidate");
+var bOutput = document.getElementById("blistCandidate");
+var display = document.getElementById("display");
+function candidates(id,name,age)
+{
+    this.id = id;
+    this.name = name;
+    this.age = age;
+}
+var eCandidates = new Array();
+eCandidates[0] = new candidates(1,"Rodrigo Duterte",70);
+eCandidates[1] = new candidates(2,"Grace Poe",50);
+eCandidates[2] = new candidates(3,"Miriam Santiago",72);
+eCandidates[3] = new candidates(4,"Mar Roxas",65);
+eCandidates[4] = new candidates(5,"Jejomar Binay",75);
+
+function bCandidates(bid,bname,bage)
+{
+    this.bid = bid;
+    this.bname = bname;
+    this.bage = bage;
+}
+
+var bECandidates = new Array()
+bECandidates[0] = new bCandidates(4,"Mar Roxas",65);
+bECandidates[1] = new bCandidates(5,"Jejomar Binay",75);
+
+for (var i=0; i < eCandidates.length;i++)
+{
+    output.innerHTML += "" + eCandidates[i].id + " - " +eCandidates[i].name + " , " + eCandidates[i].age + "<br>";
+}
+
+for (var b=0; b < bECandidates.length; b++)
+{
+    bOutput.innerHTML += "" + bECandidates[b].bid + " - " + bECandidates[b].bname + " , " + bECandidates[b].bage + "<br>";
+}
+
+
+function cVote()
+{
+    if (canName.value === "")
+    {
+        alert("You didn't write anything");
+    }
+    else if (canName.value === "Mar Roxas")
+    {
+        display.innerHTML = "";
+        display.innerHTML = "I am sorry but your candidate is black listed!";
+    }
+    else if (canName.value === "Jejomar Binay")
+    {
+        display.innerHTML = "";
+        display.innerHTML = "I am sorry but your candidate is black listed!";
+    }
+    else if (canName.value === "Rodrigo Duterte")
+    {
+        display.innerHTML = "";
+        display.innerHTML = "Leadership";
+    }
+    else if (canName.value === "Miriam Santiago")
+    {
+        display.innerHTML = "";
+        display.innerHTML = "Intelligence";
+    }
+    else if (canName.value === "Grace Poe")
+    {
+        display.innerHTML = "";
+        display.innerHTML = "Congratulations, you have chosen a valid candidate";
+    }
+    else
+    {
+        alert("Input Error!");
+    }
+    }
+</script>
+</body>
+</html> 
